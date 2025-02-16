@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<head>
+<title>SVG</title>
+<meta charset="utf-8" />
+<style type="text/css">
+	
+	body{
+		background: #ddd;
+	}
+	svg{
+		background: #fff;
+	}
+</style>
+</head>
+<body>
+
+<svg height="100" xmlns="http://www.w3.org/2000/svg">
+   <rect id="redRect" x="20" y="10" width="100" height="100" fill="red" />
+  <animate 
+	attributeName="x"  
+	xlink:href="#redRect" 
+	begin="0s" 
+	dur="5s" 
+	from="30"  
+	to="200"  
+	fill="freeze" 
+	repeatCount="indefinite" 
+  />
+</svg>
+
+<svg height="100" xmlns="http://www.w3.org/2000/svg">
+   <rect id="redRect2" x="20" y="10" width="100" height="100" fill="red" />
+  <animate 
+	attributeName="width"  
+	xlink:href="#redRect2" 
+	begin="0s" 
+	dur="1s" 
+	from="30"  
+	to="200"  
+	fill="freeze" 
+	repeatCount="2" 
+  />
+</svg>
+
+
+<svg height="130" xmlns="http://www.w3.org/2000/svg">
+    <circle id="circle1" cx="70" cy="70" r="50" />
+	<animate 
+		attributeName="cx" 
+		xlink:href="#circle1" 
+		attributeType="XML" 
+		begin="0s" 
+		dur="5s" 
+		from="30" 
+		to="500" 
+		repeatCount="indefinite"
+	/>
+	<animateColor
+		attributeName="fill"  
+		begin="1s"  
+		dur="10s"  
+		values ="blue; orange; yellow; green; red; indigo; violet; red"
+		repeatCount="indefinite"   
+	   />  
+</svg>
+
+<svg height="100" xmlns="http://www.w3.org/2000/svg">
+    <line x1="0" y1="0" x2="200" y2="60"
+          style="stroke:red;stroke-width:2" />
+</svg>
+
+<svg width="120" height="120" viewPort="0 0 50 50" version="1.1"
+     xmlns="http://www.w3.org/2000/svg">
+  
+  <rect x="10" y="10" width="100" height="100">
+    <animate attributeType="XML" attributeName="x" from="-100" to="120"
+        dur="10s" repeatCount="indefinite"/>
+  </rect>
+</svg>
+
+<svg height="100" xmlns="http://www.w3.org/2000/svg">
+    <polygon  points="20,10 300,20, 170,50" fill="green" />
+</svg>
+
+<embed src="circle.svg" type="image/svg+xml" />
+
+
+
+
+</body>
+</html>

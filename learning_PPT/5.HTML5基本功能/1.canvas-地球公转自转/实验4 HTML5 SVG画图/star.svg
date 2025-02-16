@@ -1,0 +1,26 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<g id="ChinaFlag">
+
+	  	<g>
+		    <polyline points="0,170 484,170 88,440 240,4 391,439 0,170" fill="yellow"></polyline>
+
+		</g>
+
+	  	<g  transform="translate(100,20)rotate(20)scale(0.1,0.1)">
+		    <polyline points="0,170 484,170 88,440 240,4 391,439 0,170" fill="yellow"></polyline>
+
+		</g>
+
+<!-- 	  	<g  transform="translate(400,20)rotate(20)scale(0.1,0.1)">
+		    <path d="M0,170 H484 L88,440 L240,4 L391,439 Z" fill="yellow"></path>
+
+		</g> -->
+	</g>
+</svg>
+
+
+

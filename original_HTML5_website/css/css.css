@@ -1,0 +1,95 @@
+/* main */
+.main  .mtop{
+    position: relative;
+    height: 250px;
+    width: 100%;
+    background-color: rgb(99, 103, 105);
+}
+.main  .mtop .tleft{
+    color: #f8f8f8;
+    width: 300px;
+    height: 100px;
+    position: absolute;
+    left: 40px;
+    top: 80px;
+}
+.tleft div{
+    font-size: 32px;
+}
+.main  .mtop .tright{
+    width:800px;
+    height: 150px;
+    position: absolute;
+    left: 440px;
+    top: 30px;
+}
+.tright span{ 
+    display: block;
+    font-size: 24px;
+    color: #f8f8f8;
+    margin-bottom: 10px;
+}
+.tright div{
+    font-size: 14px;
+    color: #f8f8f8;
+}
+.svg{
+    position: absolute;
+    left: 1330px;
+    top: 180px;
+}
+#draggable {
+    width: 80px;
+    height: 80px;
+    background-color: #c6e2ff;
+    border-radius: 40px;
+    color: #fff;
+    text-align: center;
+    line-height: 80px;
+    position: absolute;
+    cursor: move;
+  }
+.video{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.video .position{
+    width: 350px;
+    height: 400px;
+    position: relative;
+}
+.position h1{
+    position: absolute;
+    top: 20px;
+    left: 30px;
+}
+.position div{
+    position: absolute;
+    top: 60px;
+    left: 30px;
+    font-size: 16px;
+}
+.video .flower{
+    width: 350px;
+    height: 400px;
+}
+.video .flower h1{
+    margin:10px 0px 10px 10px;
+}
+.video .flower div{
+    font-size: 16px;
+}
+
+#canvas {
+    border: 2px solid #333;
+    background-color: #f0f0f0;
+    display: block;
+    margin: 0 auto;
+    margin-top: 50px;
+    border-radius: 10px;
+}
+.ca{
+    background:url(../img/f1.png) no-repeat center center;
+    background-size: cover;
+}

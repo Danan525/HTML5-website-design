@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>电子科大·开发者联盟</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<script type="text/javascript" src="http://api.map.baidu.com/
+	api?v3&ak=kXAyKFfkxI81dUob6NB8eeYdhPk15fSp"></script>
+	<script type="text/javascript" src="js/location.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body onload="getAddr()">
+	<div id="container">
+		<header>
+			<h1><span>电子科大</span>·开发者联盟</h1>
+			<h3>寻找心仪的开发者~</h3>
+		</header>
+
+		<nav id="menu">
+			<ul>
+				<li><a href="index.html">首页</a></li>
+				<li><a href="browse.html">开发者</a></li>
+				<li><a href="about.html">关于我们</a></li>
+				<li><a href="contact.html">联系我们</a></li>
+			</ul>
+		</nav>
+
+		<aside id="slideMenu">
+			<h3>链接</h3>
+			<hr>
+			<ul>
+				<li><a href="#">SEO</a></li>
+				<li><a href="#">PHP</a></li>
+				<li><a href="#">Ajax</a></li>
+				<li><a href="#">JQuery</a></li>
+				<li><a href="#">网页设计</a></li>
+				<li><a href="#">网页编程</a></li>
+				<li><a href="#">内容创建</a></li>
+				<li><a href="#">市场推广</a></li>
+				<li><a href="#">XHTML模板</a></li>
+			</ul>
+		</aside>
+		<section>
+			<h3>注册为开发者</h3>
+			<form>
+				<p>
+					<label for="name">姓名：</label>
+					<input type="text" name="name" id="name">
+				</p>
+				<p>
+					<label for="email">邮箱：</label>
+					<input type="text" name="email" id="email">
+				</p>
+				<p>
+					<label for="school">学院：</label>
+					<input type="text" name="school" id="school">
+				</p>
+				<p>
+					<label for="location">通信地址：</label>
+				<div id="allmap"></div>
+				</p>
+				<div style="clear:both;"></div>
+				<p>
+					<input type="submit" value="Register">
+				</p>
+
+				<p>
+				<table cellspacing="1" cellpadding="3" width="100%">
+					<tr>
+						<td class="label">经度</td>
+						<td><input type="text" name="lng" id="lng" value="" />
+						</td>
+					</tr>
+					<tr>
+						<td class="label">纬度</td>
+						<td><input type="text" name="lat" id="lat" value="" />
+						</td>
+					</tr>
+					<tr>
+						<td class="label">地址</td>
+						<td>
+							<input type='text' value='' name='server_address' id='server_address' size="30" readonly>
+							<input type='button' value='逆地址解析' id='open' onclick="getAddrInfoFromLatLng()">
+						</td>
+					</tr>
+				</table>
+				</p>
+
+			</form>
+
+		</section><!--content end-->
+		<div style="clear:both"></div>
+
+	</div>
+
+
+	<footer>
+		Copyright &copy; 2017, 电子科大·开发者联盟
+	</footer>
+
+
+</body>
+
+</html>

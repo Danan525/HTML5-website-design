@@ -1,0 +1,162 @@
+ <!DOCTYPE html>
+ <!-- 参考：http://dayu.pw/svgcontrol/ -->
+ <html>
+ <head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <title>SVG PATH路径生成</title>
+ <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+ <style>
+   body{
+     background: #ccc;
+     font-family: 'Microsoft YaHei';
+     color: #345;
+   }
+   .svg-inner{
+     width: 900px;
+     height: 600px;
+     margin: 0 auto;
+     background: #fff;
+   }
+   #svgMain{
+     -webkit-user-select: none;
+     -moz-user-select: none;
+     -ms-user-select: none;
+     box-shadow:0px 3px 13px #333333;
+   }
+   #svgMain circle{
+     cursor: pointer;
+     fill:rgba(200,200,200,1);stroke:rgba(200,200,200,1);stroke-width:3
+   }
+   #svgMain polyline{
+     fill:rgba(200,200,200,0);stroke:rgba(200,200,200,1);stroke-width:1
+   }
+   h1, h4{
+     text-align:center;
+     margin:10px;
+   }
+ </style>
+ 
+ <h1>贝塞尔曲线控制</h1>
+ <h4>M200 250 C141.5 130 421.5 146 500 250</h4>
+ <div style="text-align:center; margin-bottom:10px;">
+ <label><input type="checkbox" id="chkZ" />闭合</label>
+ &nbsp;
+ <select id="selType">
+ <option value="M">M 移动</option>
+ <option value="L" selected>L 画线到</option>
+ <option value="H">H 水平绘制</option>
+ <option value="V">V 竖直绘制</option>
+ <option value="C">C 三次贝塞尔</option>
+ <option value="S">S 三次贝塞尔对称</option>
+ <option value="Q">Q 二次贝塞尔</option>
+ <option value="T">T 二次贝塞尔连续</option>
+ </select>
+ &nbsp; *双击可添加控制点
+ </div>
+ <div class="svg-inner">
+     <svg width="100%" height="100%" id="svgMain" xmlns="http://www.w3.org/2000/svg" version="1.1">
+         <polyline points=""></polyline>
+         <path d="" style="fill:rgba(0,0,0,0);stroke:#345;stroke-width:3"></path>
+         <circle data-type="M" cx="200" cy="250" r="5"></circle>
+         <circle data-type="C" cx="141.5" cy="130" r="5"></circle>
+         <circle data-type="C" cx="421.5" cy="146" r="5"></circle>
+         <circle data-type="C" cx="500" cy="250" r="5"></circle>
+     </svg>
+ </div>
+ 
+ <script>
+ $(function(){
+     $('#svgMain').dblclick(function(e){
+         var cx = e.pageX-$(this).parent().offset().left;
+         var cy = e.pageY-$(this).parent().offset().top;
+ 
+         var circle = document.createElementNS("http://www.w3.org/2000/svg","circle");
+         circle.setAttribute("cx", cx);
+         circle.setAttribute("cy", cy);
+         circle.setAttribute("r", 5);
+         circle.setAttribute("data-type", $('#selType').val());
+         $(this).append(circle);
+         setPoints($(circle));
+         setPolyline();
+         setPath();
+     });
+ 
+     $('#svgMain circle').each(function(){
+         setPoints($(this));
+     });
+ 
+     $('#chkZ').change(function(){
+         setPolyline();
+         setPath();
+     });
+ 
+     setPolyline();
+     setPath();
+ });
+ 
+ function setPoints(obj)
+ {
+     var mouseDown=false;
+     obj.mousedown(function(){
+         mouseDown=true;
+     });
+     obj.parent().mouseup(function(){
+         mouseDown=false;
+     });
+     obj.parent().mousemove(function(e){
+         e.preventDefault();
+         if(mouseDown)
+         {
+             obj.attr('cx',e.pageX-obj.parent().offset().left);
+             obj.attr('cy',e.pageY-obj.parent().offset().top);
+             setPolyline();
+             setPath();
+         }
+     });
+ }
+ 
+ function setPolyline()
+ {
+     var points = '';
+     $('#svgMain circle').each(function(){
+ 
+         points += $(this).attr('cx') + ',' + $(this).attr('cy') + ' ';
+     });
+ 
+     $('#svgMain polyline').attr('points', points);
+ }
+ 
+ function setPath()
+ {
+     var d = '';
+     var lastType = '';
+     $('#svgMain circle').each(function(){
+         var cx = $(this).attr('cx');
+         var cy = $(this).attr('cy');
+         var t = $(this).data('type');
+         if (lastType != t || t == 'M'){
+             d += t;
+         }
+ 
+         if (t == 'H') {
+             d += cx + ' ';
+         } else if (t == 'V') {
+             d += cy + ' ';
+         } else {
+             d += cx + ' ' + cy + ' ';
+         }
+ 
+         lastType = t;
+     });
+ 
+     if ($('#chkZ')[0].checked)
+     {
+         d += ' Z';
+     }
+ 
+     $('h4').html(d);
+     $('#svgMain path').attr('d', d);
+ }
+ </script>
+ 
+ </body></html>

@@ -1,0 +1,46 @@
+
+.customcenter{
+    width: 100%;
+    height: 250px;
+    background-color: #e9e9eb;
+    position: relative;
+}
+.customcenter .center{
+    position: absolute;
+    left: 100px;
+    top: 70px;
+}
+.center span{
+    font-size: 34px;
+    color: #303133;
+}
+.center div{
+    margin-top: 10px;
+    font-size: 24px;
+}
+
+
+
+
+.botton{
+    width: 100%;
+    height: 440px;
+    background-color: #f4f4f5;
+}
+.custombottom{
+    margin: 0px auto;
+    height: 440px;
+    width: 1200px;
+    display: grid;
+    grid-template-columns:  390px 390px 380px;
+    grid-template-rows:  200px 200px;
+    gap: 30px;
+}
+.custombottom span{
+    font-size: 30px;
+    font-weight: 600;
+}
+.custombottom div{
+    font-size: 18px;
+    margin-top: 10px;
+}

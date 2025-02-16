@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="css/style.css" type="text/css">
+<title>Blue Developer Directory</title>
+<style>
+		#map { width:400px; height:250px;float:left; }
+	</style>
+	<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+</head>
+<body>
+	<div id="container">
+		<header>
+			<h1><span class="blue-text">Blue</span> Developer Directory</h1>
+			<h2>Find A Developer <span class="white-text">NOW</span></h2>
+		</header>
+		
+		<nav id="menu">
+			<ul>
+				<li class="menuitem"><a href="index.html">Home</a></li>
+				<li class="menuitem"><a href="about.html">About Us</a></li>
+				<li class="menuitem"><a href="browse.html">Browse Developers</a></li>
+				<li class="menuitem"><a href="register.html">Register As Developer</a></li>
+				<li class="menuitem"><a href="contact.html">Contact Us</a></li>
+			</ul>
+	    </nav>
+		 
+		 <aside>
+			<nav id="leftmenu">
+			<h3>Links</h3>
+				<ul>
+					<li><a href="browse.html">SEO</a></li>
+					<li><a href="browse.html">PHP</a></li>
+					<li><a href="browse.html">Ajax</a></li>
+					<li><a href="browse.html">jQuery</a></li>
+					<li><a href="browse.html">Web design</a></li>
+					<li><a href="browse.html">Web Programming</a></li>
+					<li><a href="browse.html">Content Creation</a></li>
+					<li><a href="browse.html">Internet Marketing</a></li>
+					<li><a href="browse.html">XHTML Templates</a></li>
+				</ul>
+			</nav>
+		</aside>
+    
+	<section>
+			<h3>Register As A Developer</h3>
+			<form>
+				<p>
+					<label for="name">First Name:</label>
+					<input type="text" name="first_name">
+				</p>
+				<p>
+					<label for="name">Last Name:</label>
+					<input type="text" name="last_name">
+				</p>
+				<p>
+					<label for="name">Email:</label>
+					<input type="text" name="email">
+				</p>
+				<p>
+					<label for="location">Location:</label>
+					<div id="map"></div>
+				</p>
+	<script>
+		if (navigator.geolocation) {
+			var timeoutVal = 10 * 1000 * 1000;
+			navigator.geolocation.getCurrentPosition(
+				displayPosition, 
+				displayError,
+				{ enableHighAccuracy: true, timeout: timeoutVal, maximumAge: 0 }
+			);
+		}
+		else {
+			alert("Geolocation is not supported by this browser");
+		}
+		function displayPosition(position) {
+			var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+			var options = {
+				zoom: 10,
+				center: pos,
+				mapTypeId: google.maps.MapTypeId.ROADMAP
+			};
+			var map = new google.maps.Map(document.getElementById("map"), options);
+			var marker = new google.maps.Marker({
+				position: pos,
+				map: map,
+				title: "User location"
+			});
+			var contentString = "<b>Timestamp:</b> " + parseTimestamp(position.timestamp) + "<br/><b>User location:</b> lat " + position.coords.latitude + ", long " + position.coords.longitude + ", accuracy " + position.coords.accuracy;
+			var infowindow = new google.maps.InfoWindow({
+				content: contentString
+			});
+			google.maps.event.addListener(marker, 'click', function() {
+				infowindow.open(map,marker);
+			});
+		}
+		function displayError(error) {
+			var errors = { 
+				1: 'Permission denied',
+				2: 'Position unavailable',
+				3: 'Request timeout'
+			};
+			alert("Error: " + errors[error.code]);
+		}
+		function parseTimestamp(timestamp) {
+			var d = new Date(timestamp);
+			var day = d.getDate();
+			var month = d.getMonth() + 1;
+			var year = d.getFullYear();
+			var hour = d.getHours();
+			var mins = d.getMinutes();
+			var secs = d.getSeconds();
+			var msec = d.getMilliseconds();
+			return day + "." + month + "." + year + " " + hour + ":" + mins + ":" + secs + "," + msec;
+		}
+	</script>
+	<div style="clear:both;"></div>
+	<p>
+					<input type="submit" value="Register">
+				</p>
+				
+			</form>
+    </section>
+	
+</div><!--container end-->
+	<div style="clear;both"></div>
+	<footer>
+		Copyright &copy; 2013, Blue Web Developer Directory
+	</footer>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Geolocation 简单应用</title>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+	<script src="https://webapi.amap.com/maps?v=2.0&key=6480e330b8bc1aff2e0374330b284954"></script>
+	<script src="https://webapi.amap.com/loca?v=2.0.0&key=6480e330b8bc1aff2e0374330b284954"></script>
+	<style>
+		#container {
+			width: 1000px;
+			height: 1000px;
+		}
+	</style>
+</head>
+
+<body>
+	<p>
+	<h2>H5 Geolocation 测试</h2>
+	<button onclick="getLocation()">获取当前位置</button>
+	<span id="addr"></span>
+	</p>
+	<div id="container"></div>
+
+	<script>
+		// 初始化地图
+		var map = new AMap.Map('container', {
+			zoom: 10
+		});
+
+		// 获取用户当前位置
+		function getLocation() {
+			if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(showPosition, showError);
+			} else {
+				alert("您的浏览器不支持地理定位。");
+			}
+		}
+
+		// 显示用户当前位置
+		function showPosition(position) {
+			var lat = position.coords.latitude;
+			var lng = position.coords.longitude;
+
+			// lat,lng判空处理
+			if (lat == null || lng == null) {
+				alert("无法获取位置信息。");
+				return;
+			}
+
+			var marker = new AMap.Marker({
+				position: new AMap.LngLat(lng, lat),
+				map: map
+			});
+
+			// 使用高德地图API：地理编码服务，进行逆地址解析
+			$.ajax({
+				url: 'https://restapi.amap.com/v3/geocode/regeo',
+				data: {
+					key: '1aa8c7a92d0bab5a8d77997978bdc32c',
+					location: `${lng},${lat}`,
+				},
+				success: function (response) {
+					const address = response.regeocode.formatted_address;
+					console.log('逆地址解析结果：', address);
+					$("#addr").text("经度：" + lng + "，纬度：" + lat + "，地址：" + address);
+					map.setZoomAndCenter(12, [lng, lat]);
+				}
+			});
+		}
+
+		// 显示错误信息
+		function showError(error) {
+			switch (error.code) {
+				case error.PERMISSION_DENIED:
+					alert("用户拒绝对获取地理位置的请求。");
+					break;
+				case error.POSITION_UNAVAILABLE:
+					alert("位置信息是不可用的。");
+					break;
+				case error.TIMEOUT:
+					alert("请求用户地理位置超时。");
+					break;
+				case error.UNKNOWN_ERROR:
+					alert("未知错误。");
+					break;
+			}
+		}
+
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<canvas id="myCanvas" width="800" height="800" style="border: 1px solid #000;"></canvas>
+	<p>
+		<label for="spped">转速: </label>
+		<input type="range" name="speed" id="speed" min="1" max="30" onchange="changeSpeed(this.value);">
+		<input type="text" name="speedText" id="speedText" value="10" onchange="change(this.value);">
+	</p>
+</body>
+
+<script type="text/javascript">
+	var speedFactor = document.getElementById("speed").value;
+	
+function changeSpeed(val){
+	var speedText = document.getElementById("speedText");
+	speedText.value = val;
+	speedFactor = val;
+}
+function change(val){
+	var speedRange = document.getElementById("speed");
+	speedRange.value = val;
+	speedFactor = val;
+}
+
+	var c = document.getElementById("myCanvas");
+	var ctx = c.getContext("2d");
+	var w = c.width;
+	var h = c.height;
+	// var grd = ctx.createLinearGradient(0, 0, 200, 0);
+	// grd.addColorStop(0, "red");
+	// grd.addColorStop(1, "blue");
+	// ctx.fillStyle = grd;
+	// ctx.fillRect(20, 10, 150, 80);
+
+	var sun = new Image();
+	sun.src = 'img/sun.bmp';
+	var sunStyle = 'red';
+	sun.onload = function(){
+		sunStyle = ctx.createPattern(sun, 'repeat');
+	}
+
+	var moon = new Image();
+	moon.src = 'img/moon.bmp';
+	var moonStyle = 'yellow';
+	moon.onload = function(){
+		moonStyle = ctx.createPattern(moon, 'repeat');
+		// ctx.fillStyle = moonStyle;
+		// ctx.fillRect(0, 0, 150, 75);
+	}
+	var bg = new Image();
+	bg.src = 'img/background.bmp';
+	var bgStyle = 'black';
+	bg.onload = function(){
+		bgStyle = ctx.createPattern(bg, 'repeat');
+		
+	}
+
+	var earth = new Image();
+	earth.src = 'img/earth.bmp';
+	var earthStyle = 'blue';
+	earth.onload = function(){
+		earthStyle = ctx.createPattern(earth, 'repeat');
+	}
+
+	var orbitStyle = 'white';
+
+
+	// ctx.moveTo(0,0);
+	// ctx.lineTo(200,100);
+	// ctx.stroke();
+
+	// ctx.fillStyle = moonStyle;
+
+	// ctx.beginPath();
+	// ctx.arc(95, 50, 40, 0, 1 * Math.PI);
+	// ctx.stroke();
+
+	// ctx.font = "30px Arial";
+	// ctx.strokeStyle = "red";
+	// ctx.fillText("I Love HTML5", 45, 150);
+	// ctx.strokeText("I Love HTML5", 45, 150);
+	// 
+	var rSun = w/16
+	var rEarth = w/32
+	var rMoon = w/64
+	var orbitRadiusEarth = w/4
+	var orbitRadiusMoon = w/16
+	// trunkMoon
+	var day = 0;
+
+
+
+	setInterval(function(){
+		//清屏
+		ctx.fillStyle = bgStyle;
+		ctx.fillRect(0, 0, w, h);
+		//保存初始状态
+		ctx.save();
+		
+		ctx.translate(w/2, h/2);
+		//绘制地球轨道
+		ctx.strokeStyle = orbitStyle;
+		ctx.beginPath();
+		ctx.arc(0, 0, orbitRadiusEarth, 0, 2 * Math.PI);
+		ctx.closePath(); 
+		ctx.stroke();
+		ctx.save();
+
+		ctx.rotate(Math.PI*(day/180));
+		ctx.translate(orbitRadiusEarth, 0);
+		//绘制月球轨道
+		ctx.strokeStyle = orbitStyle;
+		ctx.beginPath();
+		ctx.arc(0, 0, orbitRadiusMoon, 0, 2 * Math.PI);
+		ctx.closePath(); 
+		ctx.stroke();
+		ctx.save();
+
+		ctx.rotate(Math.PI*(12*day/180));
+		ctx.translate(orbitRadiusMoon, 0);
+
+		//绘制月球
+		ctx.fillStyle = moonStyle;
+		ctx.beginPath();
+		ctx.arc(0, 0, rMoon, 0, 2 * Math.PI);
+		ctx.closePath(); 
+		ctx.fill(); 
+
+		//绘制地球
+		ctx.restore();
+
+		ctx.save();
+		ctx.rotate(Math.PI*(day/180)*300);
+		ctx.fillStyle = earthStyle;
+		ctx.beginPath();
+		ctx.arc(0, 0, rEarth, 0, 2 * Math.PI);
+		ctx.closePath(); 
+		ctx.fill();
+		ctx.restore();
+
+
+		//绘制太阳
+		ctx.restore();
+		ctx.fillStyle = sunStyle;
+		ctx.beginPath();
+		ctx.arc(0, 0, rSun, 0, 2 * Math.PI);
+		ctx.closePath(); 
+		ctx.fill(); 
+
+
+		//恢复初始状态
+		ctx.restore();	
+
+		day = day + 1 * speedFactor;
+		
+
+	}, 30);
+
+
+</script>
+</html>

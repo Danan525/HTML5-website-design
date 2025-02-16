@@ -1,0 +1,33 @@
+.cut .w{
+    width: 1200px;
+    margin: 0 auto;
+    height: 900px;
+}
+.w ul{
+    height: 900px;
+    margin-left: 20px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+.w ul li{
+    display: flex;
+}
+.w .picture{
+    width: 250px;
+    height: 250px;
+}
+.w .font{
+    margin-left: 100px;
+    margin-top: 20px;
+}
+.w .font .foodname{
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+.w .font div{
+    font-size: 16px;
+}
+.w .font .small{
+    margin-bottom: 10px;
+}

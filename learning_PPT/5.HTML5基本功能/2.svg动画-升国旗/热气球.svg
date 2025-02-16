@@ -1,0 +1,52 @@
+<?xml version="1.0" standalone="no"?> 
+<svg width="1000" height="1000" version="1.1" xmlns="http://www.w3.org/2000/svg"> 
+
+	<defs>
+		<!-- 热气球轨迹 -->
+		<path id="hMotion2" d="M65,21c65.84,23.55,132.84-.61,145-5,13.18-4.76,9.66-5.11,21-9,50.19-17.22,83,2.13,139,10,77.63,10.91,75.7-17.67,151-4,29.27,5.31,52.53,13.8,86,6,19.78-4.61,28.18-11.43,51-13,26.76-1.84,60.2,4.45,62,16,1.64,10.52-23.15,24.44-43,31-43.63,14.42-75.58-2.68-119-11-66.39-12.72-68.29,12.59-164,12-104.21-.65-97.64-30.63-171-22C152.51,40.29,122,70.85,58,56,38.26,51.42-.58,38.81,0,26c.3-6.57,10.89-11.1,13-12C31.11,6.26,49.65,15.51,65,21Z"/>
+		<path id="hMotion1" d="M120 246 C107 45 296 218 381 87 S672 121 667 186 C691 276 641 337 573 373 Q358 446 213 386 T121 245 Z"/>
+		
+
+	</defs>
+	<!-- 热气球模型 -->
+	<g>
+
+		<path d="M240 373 C71 156 190 48 336 42 S601 163 419 371 Q330 299 240 373" stroke="red" stroke-width="2" fill="red" />
+		<rect x="250" y="450" rx="10" ry="10" width="150" height="60" stroke="#432918" fill="#8c6244" stroke-width="4"/>
+		<line x1="240" y1="371"  x2="280" y2="450" stroke="#432918" fill="transparent" stroke-width="5"/> 
+		<line x1="420" y1="371"  x2="380" y2="450" stroke="#432918" fill="transparent" stroke-width="5"/> 
+		<rect x="310" y="380" rx="5" ry="5" width="40" height="30" fill="#dadada"  stroke-width="5"/> 
+			<!-- <g transform="translate(190,30)">
+		<path xmlns="http://www.w3.org/2000/svg" d="M138,346.54c5.56,0,7.27-6.41,4.27-9-2.56-2.56-3.42-9.83-3.42-9.83a8.06,8.06,0,0,0-2.56,8.12c1.71,5.13-.43,5.13-.43,5.13-1.28,0-1.28-4.27-1.28-4.27-.85,2.56-2.56,3.85-2.14,6C132.89,346.54,136.31,346.54,138,346.54Z" style="fill:#f39200"/>
+		</g> -->
+	
+
+        <animateMotion dur="60s" repeatCount="indefinite" keyTimes="0;0.25;0.4;0.88;1" keyPoints="0;0.4;0.5;0.9;1" calcMode="paced" rotate="0">
+        	<mpath xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#hMotion1" /> 
+    	</animateMotion>
+    	<animateTransform attributeType="XML" attributeName="transform" begin="0" dur="60s" type="scale" values="0.1;0.1;0.06;0.06;0.1" repeatCount="indefinite"/>  
+
+    	        <animate attributeName="translate"
+                 attributeType="XML"
+                 dur="4s"
+                 values="60 ; 110 ; 60 ; 10 ; 60"
+                 keyTimes="0 ; 0.25 ; 0.5 ; 0.75 ; 1"
+                 repeatCount="indefinite"/>
+ 
+        <animate attributeName="cy"
+                 attributeType="XML"
+                 dur="4s"
+                 values="10 ; 60 ; 110 ; 60 ; 10 "
+                 keyTimes="0 ; 0.25 ; 0.5 ; 0.75 ; 1"
+                 repeatCount="indefinite"/>
+    </g>
+	<!-- <g transform="translate(-30,-20)">
+	<path d="M426 70 C499 120 546 217 477 378 470 367 462 358 448 353 463 261 464 156 427 71
+	" stroke="black" stroke-width="2" fill="white" />
+	</g> -->
+	<!-- 气球白色月牙 -->
+	<!-- <path d="M160.24,391.83A1.25,1.25,0,0,0,159,394l14.1,9.83v-3.42Z" style="fill:#cca183"/><path d="M138.45,0c89.3,54.27,14.1,305.52,6,323.89h0a37.87,37.87,0,0,1,12,3h0C281.59,97.85,197.84,17.09,138.45,0Z" style="fill:#fff"/> -->
+	<!-- 气球白色月牙 -->
+	<!-- <path d="M138,0C78.62,17.09-5.13,97.85,120.07,326.88h0a37.88,37.88,0,0,1,12-3h0C123.92,305.52,48.71,54.27,138,0Z" style="fill:#fff"/> -->
+
+</svg>

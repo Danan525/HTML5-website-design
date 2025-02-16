@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>电子科大·开发者联盟</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+    <div id="container">
+        <header>
+            <h1><span>电子科大</span>·开发者联盟</h1>
+            <h3>寻找心仪的开发者~</h3>
+        </header>
+        
+        <nav id="menu">
+            <ul>
+                <li><a href="index.html">首页</a></li>
+                <li><a href="browse.html">开发者</a></li>
+                <li><a href="about.html">关于我们</a></li>
+                <li><a href="#">联系我们</a></li>
+            </ul>            
+        </nav>
+
+        <aside id="slideMenu">
+	            <h3>链接</h3>
+	            <hr>
+	            <ul>
+	                <li><a href="#">SEO</a></li>
+	                <li><a href="#">PHP</a></li>
+	                <li><a href="#">Ajax</a></li>
+	                <li><a href="#">JQuery</a></li>
+	                <li><a href="#">网页设计</a></li>
+	                <li><a href="#">网页编程</a></li>
+	                <li><a href="#">内容创建</a></li>
+	                <li><a href="#">市场推广</a></li>
+	                <li><a href="#">XHTML模板</a></li>
+	            </ul>
+        </aside>
+    	<section>
+			<h3>联系我们</h3>
+			<p>请填写下表，方便我们后续与您联系</p>
+			<form method="post" action="#">
+			
+
+				<p>
+					<label for="name">姓名：</label>
+					<input name="name" id="name" type="text">
+				</p>
+				<p>
+					<label for="email">邮箱：</label>
+					<input name="email" id="email" type="email">
+				</p>
+				<p>
+					<label for="phone">电话：</label>
+					<input name="phone" id="phone" type="phone">
+				</p>
+				<p>
+					<label for="phone">方便电话的时间：</label>
+					<input name="callTime" id="callTime" type="radio">早上
+					<input name="callTime" id="callTime" type="radio">下午
+					<input name="callTime" id="callTime" type="radio">晚上
+				</p>
+				<p>
+					<label for="address">通信地址：</label>
+					<input name="address"  list="address">
+					<datalist id="address">
+						<option value="上海">
+						<option value="成都">
+						<option value="广州">
+						<option value="深圳">
+						<option value="北京">						
+					</datalist>
+				</p>
+				<fieldset>
+					<legend>关于你的项目</legend>
+					<p>
+						<label for="budget">预算：</label>
+						<input type="range" name="budget" id="budget" min="0" max="100000" onchange="changeBudge(this.value);">
+						<input type="text" name="textBudget" id="textBudget" value="50000">
+					</p>
+					<p>
+						<label>需要的服务项目：</label>
+						<p></p>
+						<table class="service">
+						<tr>
+							<td><input type="checkbox" name="services">html</td>
+							<td><input type="checkbox" name="services">PHP</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" name="services">ASP</td>
+							<td><input type="checkbox" name="services">Java</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" name="services">C++</td>
+							<td><input type="checkbox" name="services">PS</td>
+						</tr>
+						</table>
+						<p class="chose">您选择了<span></span>种服务</p>
+					</p>
+					<p>
+						<label for="website">当前已有网站：</label>
+						<input type="url" name="website">
+					</p>
+					<p>
+						<label for="start">项目启动日期：</label>
+						<input type="date" name="start">
+					</p>
+					<p>
+						<label for="pages">网页数量：</label>
+						<input type="number" name="pages">
+					</p>
+					<p>
+						<label for="color">期望网站主色调：</label>
+						<input type="color" name="color">
+					</p>
+					
+
+				</fieldset>
+
+				<input type="submit" value="提交">
+
+	    	</form>
+    	</section><!--content end-->
+		<div style="clear:both"></div>
+
+    </div>
+
+
+	<footer>
+		Copyright &copy; 2017, 电子科大·开发者联盟
+	</footer>
+</body>
+</html>

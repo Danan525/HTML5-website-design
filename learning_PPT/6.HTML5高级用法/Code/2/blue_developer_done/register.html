@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>电子科大·开发者联盟</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<script type="text/javascript" src="http://api.map.baidu.com/
+	api?v=2.0&ak=TjtRpSUplLVTs94wcEj3eEDdAj1mhbj3"></script>
+	<script type="text/javascript" src="js/location.js"></script>
+</head>
+<body onload="getAddr()">
+    <div id="container">
+        <header>
+            <h1><span>电子科大</span>·开发者联盟</h1>
+            <h3>寻找心仪的开发者~</h3>
+        </header>
+        
+        <nav id="menu">
+            <ul>
+                <li><a href="index.html">首页</a></li>
+                <li><a href="browse.html">开发者</a></li>
+                <li><a href="about.html">关于我们</a></li>
+                <li><a href="contact.html">联系我们</a></li>
+            </ul>            
+        </nav>
+
+        <aside id="slideMenu">
+	            <h3>链接</h3>
+	            <hr>
+	            <ul>
+	                <li><a href="#">SEO</a></li>
+	                <li><a href="#">PHP</a></li>
+	                <li><a href="#">Ajax</a></li>
+	                <li><a href="#">JQuery</a></li>
+	                <li><a href="#">网页设计</a></li>
+	                <li><a href="#">网页编程</a></li>
+	                <li><a href="#">内容创建</a></li>
+	                <li><a href="#">市场推广</a></li>
+	                <li><a href="#">XHTML模板</a></li>
+	            </ul>
+        </aside>
+    	<section>
+			<h3>注册为开发者</h3>
+			<form>
+				<p>
+					<label for="name">姓名：</label>
+					<input type="text" name="name" id="name">
+				</p>
+				<p>
+					<label for="email">邮箱：</label>
+					<input type="text" name="email" id="email">
+				</p>
+				<p>
+					<label for="school">学院：</label>
+					<input type="text" name="school" id="school">
+				</p>
+				<p>
+					<label for="location">通信地址：</label>
+					<div id="allmap"></div>
+				</p>
+				<div style="clear:both;"></div>
+				<p>
+					<input type="submit" value="Register">
+				</p>
+					
+			</form>
+
+    	</section><!--content end-->
+		<div style="clear:both"></div>
+
+    </div>
+
+
+	<footer>
+		Copyright &copy; 2017, 电子科大·开发者联盟
+	</footer>
+
+	
+</body>
+</html>
+
+         

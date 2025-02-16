@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>HTML5 Drag & Drop Demo</title>
+	<style type="text/css">
+		figure{border: 1px solid #000; width: 300px; height: 300px;}
+		img{width: 300px; height: 300px;}
+	</style>
+	<script type="text/javascript" src="modernizr.js"></script>
+</head>
+<body>
+	<figure id="box1" ondragover="dragOver(event)" ondrop="drop(event)"></figure>
+	<img id="img" src="1.jpg" ondragstart="dragStart(event)">
+	<figure id="box2" ondragover="dragOver(event)" ondrop="drop(event)"></figure>
+	<script type="text/javascript">
+		//检测这个网站是否支持拖拽（环境检测）
+		if (window.FileReader && Modernizr.draganddrop) {
+			//当拖拽开始时记录id
+			function dragStart(ev){
+				ev.dataTransfer.setData("id", ev.target.id);
+				//console.log(ev.target.id);
+			}
+			//拖拽到目标区域时调用以下函数
+			function dragOver(ev){
+				//因为默认不允许拖拽，所以需要以下指令允许拖拽
+				ev.preventDefault();
+			}
+			function drop(ev){
+				var draggedID = ev.dataTransfer.getData("id");
+				var draggedObj = document.getElementById(draggedID);
+				var boxObj = document.getElementById(ev.target.id);
+				//添加到容器里
+				boxObj.appendChild(draggedObj);
+			}
+		}
+	</script>
+</body>
+</html>

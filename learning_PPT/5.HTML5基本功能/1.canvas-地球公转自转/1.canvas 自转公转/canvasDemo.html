@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Canvas Demo</title>
+	<style type="text/css">
+	  body{
+	  	background: #ddd;
+	  }
+	  canvas{
+	  	border:2px solid #d3d3d3;
+	  	background: #fff;
+	  }
+	  img{
+	  	display: none;
+	  }
+	</style>
+</head>
+<body>
+	<div>
+		<canvas id="canvas1" width="400" height="300"></canvas>
+		<p><img id="scream" src="img/img_the_scream.jpg" alt="The Scream" width="220" height="277"></p>
+		<canvas id="canvas2" width="400" height="300"></canvas>
+		<br>
+		<canvas id="canvas3" width="400" height="300"></canvas>
+		<br>
+		<canvas id="canvas4" width="400" height="400"></canvas>
+		<br>
+	</div>
+
+	<script type="text/javascript">
+		// var canvas1 = document.getElementById('canvas1');
+		// var ctx1 = canvas1.getContext('2d');
+
+		// ctx1.font = '35pt Arial';
+		// ctx1.fillStyle = 'DeepSkyBlue';
+		// ctx1.strokeStyle = 'DarkSlateGrey';
+
+		// ctx1.fillText('I LOVE HTML5', 45, 150);
+		// ctx1.strokeText('I LOVE HTML5', 45, 150);
+
+		//1 - Get Object
+		var canvas1 = document.getElementById('canvas1');
+		var ctx1 = canvas1.getContext('2d');
+		
+		//2 - Set Params
+		ctx1.font = '35pt Arial';
+		ctx1.fillStyle = '#ff00ff';
+		ctx1.strokeStyle = 'DarkSlateGrey';
+		
+		//3 - Make Shape
+		ctx1.fillText("I Love HTML5",45,150);
+		ctx1.strokeText("I Love HTML5",45,150);
+
+		var grd = ctx1.createLinearGradient(0,0,200,0);
+		grd.addColorStop(0, "red");
+		grd.addColorStop(1, "white");
+
+		ctx1.fillStyle = grd;
+		ctx1.fillRect(10,10,150,80);
+
+		var canvas2 = document.getElementById("canvas2");
+		var ctx2 = canvas2.getContext('2d');
+		var img = document.getElementById("scream");
+
+		img.onload = function() {
+			ctx2.drawImage(img, 10, 10);
+		}
+
+
+		var canvas3 = document.getElementById("canvas3");
+		var ctx3 = canvas3.getContext('2d');
+
+		ctx3.moveTo(0, 0);
+		ctx3.lineTo(200, 100);
+		ctx3.stroke();
+
+		var canvas4 = document.getElementById("canvas4");
+		var ctx4 = canvas4.getContext('2d');
+
+		var arcX = canvas4.width/2;
+		var arcY = canvas4.height/2;
+
+		var posX = 0;
+		var posY = 0;
+
+		var day = 0;
+
+		// //清屏
+		// ctx4.fillStyle="black";
+	 //    ctx4.fillRect(0,0,canvas4.width,canvas4.height);
+
+
+		// ctx4.translate(arcX,arcY);
+		// ctx4.beginPath();
+		// //绘制红色太阳
+		// ctx4.fillStyle="red";
+
+		// ctx4.arc(0, 0, 60, 0, Math.PI * 2);
+		// ctx4.fill();
+		// //绘制蓝色地球
+		// ctx4.fillStyle="blue";
+		// ctx4.rotate(Math.PI*(day/180));
+		// ctx.translate(180,0);
+		// ctx4.beginPath();
+		// ctx4.arc(0,0, 30, 0, Math.PI * 2);
+		// ctx4.fill();
+		// //绘制黄色月亮
+		// ctx4.fillStyle="yellow";
+		// ctx4.rotate(Math.PI*2*(day/30)-Math.PI*2*(day/360));
+		// ctx.translate(30,0);
+		// ctx4.beginPath();
+		// ctx4.arc(0,0, 4, 0, Math.PI * 2);
+		// ctx4.fill();
+
+		setInterval(function(){
+
+			ctx4.save();
+			day++;
+			if (day > 359) { day = 0};
+
+			//清屏
+			ctx4.fillStyle="black";
+		    ctx4.fillRect(0,0,canvas4.width,canvas4.height);
+
+			//绘制红色太阳
+			ctx4.fillStyle="red";
+			ctx4.translate(arcX,arcY);
+			ctx4.beginPath();
+			ctx4.arc(0, 0, 60, 0, Math.PI * 2);
+			ctx4.fill();
+			//绘制蓝色地球
+			ctx4.fillStyle="blue";
+			ctx4.rotate(Math.PI*(day/180));
+			ctx4.translate(180,0);
+			ctx4.beginPath();
+			ctx4.arc(0,0, 15, 0, Math.PI * 2);
+			ctx4.fill();
+			//绘制黄色月亮
+			ctx4.fillStyle="yellow";
+			ctx4.rotate(Math.PI*2*(day/30)-Math.PI*2*(day/360));
+			ctx4.translate(30,0);
+			ctx4.beginPath();
+			ctx4.arc(0,0, 4, 0, Math.PI * 2);
+			ctx4.fill();
+
+			ctx4.restore();
+
+
+		}, 30);
+
+	</script>
+</body>
+</html>

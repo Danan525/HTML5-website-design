@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Canvas</title>
+	<style type="text/css" media="screen">
+		canvas{ border: 2px solid #ddd;}	
+	</style>
+</head>
+<body>
+	<p>
+		<label for="budget">转速：</label>
+		<input type="range" name="budget" id="budget" min="1" max="30" onchange="changeBudge(this.value);">
+		<input type="text" name="textBudget" id="textBudget" value="15" onchange="change(this.value);">
+	</p>
+	<canvas id="canvas1" width="600" height="600">
+		
+	</canvas>
+
+</body>
+
+	<script  type="text/javascript" charset="utf-8">
+
+
+		var c = document.getElementById("canvas1");
+		var ctx = c.getContext("2d");
+
+		var cx = c.width/2;
+		var cy = c.height/2;
+		var day = 1;
+		var multi = 1;
+
+		var img = new Image();
+		img.src = 'img/background.bmp';
+
+		var sun = new Image();
+		sun.src = 'img/sun.bmp';
+		var sunStyle = 'red';
+		sun.onload = function(){
+			sunStyle = ctx.createPattern(sun, 'repeat');
+		}
+
+		var earth = new Image();
+		earth.src = 'img/earth.bmp';
+		var earthStyle = 'blue';
+		earth.onload = function(){
+			earthStyle = ctx.createPattern(earth, 'repeat');
+		}
+
+		var moon = new Image();
+		moon.src = 'img/moon.bmp';
+		var moonStyle = 'blue';
+		moon.onload = function(){
+			moonStyle = ctx.createPattern(moon, 'repeat');
+		}
+
+		
+
+		setInterval(function(){
+			ctx.save();
+				day += multi;
+				if(day >= 360){
+					day = 0;
+				}
+
+				//清屏
+				ctx.drawImage(img, 0, 0);
+
+				ctx.translate(cx,cy); //	太阳位置
+				ctx.fillStyle = sunStyle;
+
+				// ctx.save();
+				ctx.beginPath();
+				ctx.arc(0,0,40,0,360);
+				ctx.fill();
+				ctx.beginPath();
+				ctx.arc(0,0,150,0,Math.PI*2);
+				ctx.lineWidth=2;
+				ctx.strokeStyle="white";
+				ctx.stroke();//画空心圆
+				ctx.closePath();
+
+				ctx.rotate(Math.PI*2*day/360);
+				ctx.translate(150,0); //	地球位置
+				ctx.fillStyle = earthStyle;		//设置地球颜色
+				ctx.save();
+				// ctx.arc(0,0,20,0,Math.PI*2);
+				ctx.rotate(Math.PI*2*day/360);
+				ctx.translate(60,0); //		月球位置
+				// ctx.save();
+				ctx.fillStyle = moonStyle;		//绘制月球
+				ctx.rotate(-Math.PI*2*12*day/360);
+				ctx.beginPath();
+				ctx.arc(0,0,10,0,360);
+				ctx.fill();
+				ctx.restore();
+				ctx.rotate(-Math.PI*2*day*150/360);
+				ctx.beginPath();
+				ctx.arc(0,0,20,0,360); //绘制地球
+				ctx.fill();
+				ctx.beginPath();
+				ctx.arc(0,0,60,0,360);
+				ctx.lineWidth=1;
+				ctx.strokeStyle="white";
+				ctx.stroke();//画空心圆
+				ctx.closePath();
+			ctx.restore();
+		}, 30);
+
+		function changeBudge(val){
+			var textBudget = document.getElementById("textBudget");
+			textBudget.value = val;
+			multi = parseInt(val);
+		}
+		function change(val){
+			var budget = document.getElementById("budget");
+			budget.value = val;
+			multi = parseInt(val);
+		}
+	</script>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="css/style.css" type="text/css">
+<title>Blue Developer Directory</title>
+</head>
+<body>
+	<div id="container">
+		<header>
+			<h1><span class="blue-text">Blue</span> Developer Directory</h1>
+			<h2>Find A Developer <span class="white-text">NOW</span></h2>
+		</header>
+		
+		<nav id="menu">
+			<ul>
+				<li class="menuitem"><a href="index.html">Home</a></li>
+				<li class="menuitem"><a href="about.html">About Us</a></li>
+				<li class="menuitem"><a href="browse.html">Browse Developers</a></li>
+				<li class="menuitem"><a href="contact.html">Contact Us</a></li>
+			</ul>
+	    </nav>
+		 
+		 <aside>
+			<nav id="leftmenu">
+			<h3>Links</h3>
+				<ul>
+					<li><a href="browse.html">SEO</a></li>
+					<li><a href="browse.html">PHP</a></li>
+					<li><a href="browse.html">Ajax</a></li>
+					<li><a href="browse.html">jQuery</a></li>
+					<li><a href="browse.html">Web design</a></li>
+					<li><a href="browse.html">Web Programming</a></li>
+					<li><a href="browse.html">Content Creation</a></li>
+					<li><a href="browse.html">Internet Marketing</a></li>
+					<li><a href="browse.html">XHTML Templates</a></li>
+				</ul>
+			</nav>
+		</aside>
+    
+	<section>
+			<h3>Contact Us</h3>
+			<p>Please use this form to contact a member of our website team</p>
+			<form method="post" action="somescript.php">
+				<p>
+					<label for="name">Full Name:</label>
+					<input type="text" name="name">
+				</p>
+				<p>
+					<label for="email">Email Address: </label>
+					<input type="email" name="email">
+				</p>
+				<p>
+					<label for="phone">Phone Number: </label>
+					<input type="tel" name="phone">
+				</p>
+				<p>
+					<label for="call">Best Time To Call: </label>
+					<input type="radio" name="time" value="morning" checked>Morning
+					<input type="radio" name="time" value="noon">Noon
+					<input type="radio" name="time" value="evening">Evening
+				</p>
+				<p>
+				<label for="location">Location: </label>
+					<input name ="location" list="location">
+					<datalist id="location">
+					<option value="New York">
+					<option value="Boston">
+					<option value="Chicago">
+					<option value="Los Angelas">
+					<option value="Miami">
+					</datalist>
+				</p>
+				<fieldset name="about">
+				<legend>About Your Project</legend>
+				 <script type="text/javascript">
+    function updateTextInput(val) {
+      document.getElementById('textInput').value=val; 
+    }
+  </script>
+				<p>
+					<label for="budget">Budget: </label>
+					 <input type="range" name="rangeInput" min="0" max="10000" onchange="updateTextInput(this.value);">                                                       
+    <input type="text" id="textInput" value="">
+				</p>
+				<p>
+					<label for="call">Services Needed: (Check all that apply) </label>
+					<table>
+						<tr>
+							<td><input type="checkbox" name="services" value="html">html</td>
+							<td><input type="checkbox" name="services" value="php">PHP</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" name="services" value="asp">ASP</td>
+							<td><input type="checkbox" name="services" value="java">Java</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" name="services" value="c">C++</td>
+							<td><input type="checkbox" name="services" value="design">Design</td>
+						</tr>
+					</table>
+				</p>
+
+				<p>
+					<label for="website">Current Website: </label>
+					<input type="url" name="website">
+				</p>
+				<p>
+					<label for="start">Start Date: </label>
+					<input type="date" name="start">
+				</p>
+				<p>
+					<label for="pages">Number of Pages: </label>
+					<input type="number" name="pages">
+				</p>
+				<p>
+					<label for="color">Main Color Of Site: </label>
+					<input type="color" name="color">
+				</p>
+				
+				</fieldset>
+				<p>
+					<input type="submit" value="Submit Inquiry">
+				</p>
+			
+			</form>
+    </section>
+	
+</div><!--container end-->
+	<div style="clear;both"></div>
+	<footer>
+		Copyright &copy; 2013, Blue Web Developer Directory
+	</footer>
+</body>
+</html>

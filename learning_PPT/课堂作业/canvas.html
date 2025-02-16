@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>HTML5 Canvas Demo</title>
+</head>
+<body>
+	<canvas id="myCanvas" width="800" height="800" style="border:1px solid #000000;"> </canvas>
+	<script type="text/javascript">
+		var c=document.getElementById("myCanvas"); 
+		var ctx=c.getContext("2d"); 
+		// var grd=ctx.createLinearGradient(0,0,200,0); // 创建渐变,两个坐标（0,0）和（200,0）
+		// grd.addColorStop(0,"white"); 
+		// grd.addColorStop(0.5,"pink");
+		// grd.addColorStop(1,"white"); // 填充渐变 
+		// ctx.fillStyle=grd; 
+		// ctx.fillRect(10,10,150,80); // 绘制矩形
+
+		 //设置背景图 
+ 		var background = new Image(); 
+ 		background.src = 'background.bmp'; 
+ 		var backgroundStyle = 'blue';
+ 		var w = c.width;
+ 		var h = c.height;
+ 		//当图片加载完成时
+ 		background.onload = function(){ 
+   			backgroundStyle = ctx.createPattern(background, 'repeat');  
+ 		
+ 		//使用背景图填充
+ 		ctx.fillStyle = backgroundStyle;
+ 		ctx.fillRect( 0, 0, w, h); 
+ 		}
+
+ 		
+ 		var day = 0;
+ 		setInterval (function(){
+ 			//清屏
+			ctx.fillStyle = backgroundStyle;
+			ctx.fillRect( 0, 0, w, h);
+			ctx.save();
+
+			ctx.translate(w/2,h/2);
+ 			ctx.rotate(2*Math.PI*(day/360));//坐标轴旋转，弧度值,旋转一圈过一天
+
+			ctx.strokeStyle = '#ffffff';
+			ctx.beginPath(); 
+			ctx.arc(90,90,40,0,2*Math.PI); 
+			ctx.stroke();
+
+			ctx.restore();
+			day++;
+
+ 		}, 30); //每隔30毫秒执行一次,FPS=33
+
+	</script>
+</body>
+</html>
